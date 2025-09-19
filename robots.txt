@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# サイトマップの場所を指定（実際のGitHub Pages URLに置き換えてください）
+# 例: https://あなたのGitHubユーザー名.github.io/リポジトリ名/sitemap.xml
+Sitemap: https://あなたのGitHubユーザー名.github.io/リポジトリ名/sitemap.xml
+
+# 検索エンジンに重要なページを示す
+Allow: /index.html
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.png
+Allow: /*.gif
+
+# Google Search Console確認ファイルを許可
+Allow: /google*.html
+
+# 不要なファイルへのアクセスを制限
+Disallow: /*.log
+Disallow: /temp/
+Disallow: /backup/
+Disallow: /.git/
