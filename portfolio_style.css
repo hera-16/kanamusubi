@@ -318,6 +318,94 @@ nav {
     display: block;
 }
 
+/* 画像右下に常時「↑Click」バッジを表示 */
+.activity-image {
+    position: relative;
+}
+
+.activity-image a {
+    position: relative;
+    display: inline-block;
+}
+
+.activity-image a::after {
+    content: "↑Click";
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 1;
+    font-size: 0.9rem;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    pointer-events: none; /* クリックを妨げない */
+}
+
+.activity-image a:hover::after {
+    background: rgba(102, 204, 255, 0.9);
+    color: #111111;
+    border-color: transparent;
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+}
+
+/* 画像リンクの視認性向上 */
+.activity-image {
+    position: relative;
+}
+
+.activity-image a img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.35));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.activity-image:hover a img,
+.activity-image a:focus img {
+    transform: scale(1.03);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+.activity-image:hover::after,
+.activity-image a:focus + .activity-cta ~ .activity-image::after {
+    opacity: 1;
+}
+
+.activity-cta {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid #888;
+    color: #fff;
+    text-decoration: none;
+    background: transparent;
+    transition: all 0.25s ease;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background: #ffffff15;
+    border-color: #bbb;
+}
+
 .activity-info h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -406,6 +494,14 @@ footer {
         height: 250px;
         width: 250px;
     }
+    .activity-image a::after {
+        font-size: 0.85rem;
+        right: 8px;
+        bottom: 8px;
+        padding: 3px 7px;
+    }
+    /* モバイルではホバーがないので控えめなシャドウでリンク感を示す */
+    .activity-image a img { box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     
     .activity-info h3 {
         font-size: 1.8rem;
@@ -527,6 +623,14 @@ footer {
         height: 200px;
         width: 200px;
     }
+    .activity-image a::after {
+        font-size: 0.8rem;
+        right: 6px;
+        bottom: 6px;
+        padding: 3px 6px;
+    }
+    .activity-cta { margin-top: 0.4rem; }
+    .cta-button { padding: 0.45rem 0.9rem; font-size: 0.9rem; }
     
     .activity-info h3 {
         font-size: 1.5rem;
