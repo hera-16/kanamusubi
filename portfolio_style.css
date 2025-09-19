@@ -12,6 +12,17 @@ body {
     line-height: 1.6;
 }
 
+/* レスポンシブ改行のための補助クラス */
+/* デフォルトは非表示（PCなど広い画面では改行しない） */
+.br-md {
+    display: none;
+}
+
+/* 段落の自動バランス調整（対応ブラウザで自然な改行） */
+.profile-details p {
+    text-wrap: balance;
+}
+
 /* ローディング画面 */
 .loading-screen {
     position: fixed;
@@ -344,6 +355,8 @@ footer {
 
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
+    /* 768px以下では任意改行を有効化 */
+    .br-md { display: inline; }
     header {
         height: auto;
         min-height: 60px;
