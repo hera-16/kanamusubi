@@ -681,7 +681,8 @@ footer {
     }
 
     .store-image img {
-        height: 300px;
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 
     .store-info h2 {
@@ -880,7 +881,8 @@ footer {
     }
     
     .store-image img {
-        height: 240px;
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 
     .store-info p {
