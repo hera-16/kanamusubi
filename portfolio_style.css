@@ -54,7 +54,7 @@ body {
 .letter {
     opacity: 0;
     transform: translateY(-100px);
-    animation: dropLetter 0.8s ease-out forwards;
+    animation: dropLetter 0.8s ease-out forwards !important;
 }
 
 .letter:nth-child(1) { animation-delay: 0.1s; }
@@ -1079,5 +1079,13 @@ footer {
 @media (min-width: 769px) {
     .click-indicator {
         display: none !important;
+    }
+}
+
+/* prefers-reduced-motion が有効な環境でもローディングアニメーションを強制表示 */
+@media (prefers-reduced-motion: reduce) {
+    .letter {
+        animation: dropLetter 0.8s ease-out forwards !important;
+        animation-delay: inherit !important;
     }
 }

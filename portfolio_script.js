@@ -32,19 +32,22 @@ function startHeroHop() {
 }
 
 // ローディング画面の制御
+const loadingStartTime = window._loadingStart || Date.now();
+
 window.addEventListener('load', function() {
     const loadingScreen = document.querySelector('.loading-screen');
+    const minDisplayTime = 3000;
+    const elapsed = Date.now() - loadingStartTime;
+    const remaining = Math.max(0, minDisplayTime - elapsed);
 
-    // 3秒後にローディング画面をフェードアウト（全ての文字のアニメーション完了後）
     setTimeout(() => {
         loadingScreen.classList.add('fade-out');
 
-        // フェードアウト完了後にローディング画面を削除・ヒーロータイトル開始
         setTimeout(() => {
             loadingScreen.style.display = 'none';
             startHeroHop();
         }, 500);
-    }, 3000);
+    }, remaining);
 });
 
 // スライドショー機能
