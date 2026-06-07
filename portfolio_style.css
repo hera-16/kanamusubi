@@ -123,9 +123,68 @@ nav {
     opacity: 0.8;
 }
 
+.header-logo {
+    height: 36px;
+    width: auto;
+    display: block;
+    filter: invert(1) brightness(2);
+    transition: opacity 0.3s ease;
+}
+
+.logo a:hover .header-logo {
+    opacity: 0.8;
+}
+
 .language {
     font-size: 0.9rem;
     color: #cccccc;
+}
+
+/* ヒーロータイトル */
+.hero-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    gap: 0.05em;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hero-title.intro {
+    opacity: 1;
+    animation: heroTitleIntro 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes heroTitleIntro {
+    0%   { opacity: 0; transform: translate(-50%, calc(-50% + 24px)); }
+    100% { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.hero-title.visible {
+    opacity: 1;
+}
+
+.hero-letter {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+    display: inline-block;
+}
+
+.hero-letter.hop {
+    animation: heroHop 0.45s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+@keyframes heroHop {
+    0%   { transform: translateY(0); }
+    40%  { transform: translateY(-22px); }
+    70%  { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
 }
 
 /* ヒーローセクション */
@@ -270,6 +329,143 @@ nav {
     transform: translateY(-2px);
 }
 
+/* 店舗セクション */
+.store-section {
+    padding: 6rem 2rem;
+    background-color: #f5f0eb;
+    color: #1a1a1a;
+}
+
+.store-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.store-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.store-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: #888;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.store-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+.store-info p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.9;
+}
+
+.store-links {
+    margin-top: 2.5rem;
+}
+
+.store-links .social-link {
+    color: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+.store-links .social-link:hover {
+    background-color: #1a1a1a;
+    color: #f5f0eb;
+}
+
+/* アクセスセクション */
+.access-section {
+    padding: 6rem 2rem;
+    background-color: #222222;
+    color: #ffffff;
+}
+
+.access-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+.access-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.access-details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0;
+}
+
+.access-details dt {
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: #888;
+    font-weight: 500;
+    padding: 1rem 1.5rem 1rem 0;
+    border-bottom: 1px solid #333;
+    white-space: nowrap;
+}
+
+.access-details dd {
+    font-size: 1rem;
+    color: #cccccc;
+    padding: 1rem 0;
+    border-bottom: 1px solid #333;
+    line-height: 1.7;
+}
+
+.access-details dd:last-child,
+.access-details dt:nth-last-child(2) {
+    border-bottom: none;
+}
+
+.access-details a {
+    color: #cccccc;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.access-details a:hover {
+    color: #ffffff;
+}
+
+.access-map {
+    height: 400px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.access-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 /* その他の活動セクション */
 .other-activities {
     padding: 4rem 2rem;
@@ -377,6 +573,45 @@ footer {
         font-size: 1.2rem;
     }
 
+    .header-logo {
+        height: 28px;
+    }
+
+    .store-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+    }
+
+    .store-image img {
+        height: 300px;
+    }
+
+    .store-info h2 {
+        font-size: 1.8rem;
+    }
+
+    .store-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .access-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .access-info h2 {
+        font-size: 1.8rem;
+    }
+
+    .access-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .access-map {
+        height: 300px;
+    }
+
     .profile-container {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -453,6 +688,10 @@ footer {
         bottom: 1rem;
     }
     
+    .hero-letter {
+        font-size: 2.2rem;
+    }
+
     .loading-text {
         font-size: 2rem;
         letter-spacing: 0.1em;
@@ -543,14 +782,26 @@ footer {
         margin-bottom: 2rem;
     }
     
+    .store-image img {
+        height: 240px;
+    }
+
+    .store-info p {
+        font-size: 0.9rem;
+    }
+
+    .store-info h2 {
+        font-size: 1.5rem;
+    }
+
     .profile {
         padding: 2rem 1rem;
     }
-    
+
     .profile-image img {
         height: 300px;
     }
-    
+
     .hero {
         height: 80vh;
     }

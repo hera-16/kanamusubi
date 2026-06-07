@@ -1,14 +1,48 @@
+// ヒーロータイトルのhopループ
+function startHeroHop() {
+    const heroTitle = document.getElementById('heroTitle');
+    if (!heroTitle) return;
+
+    // 導入: 下からふわっとスライドイン
+    heroTitle.classList.add('intro');
+
+    const letters = heroTitle.querySelectorAll('.hero-letter');
+    const hopInterval = 120;    // 文字間の間隔(ms)
+    const loopDelay = 2200;     // 1ループ後の待機時間(ms)
+    const introDelay = 1000;    // イントロ完了後hopまでの待機(ms)
+
+    function runLoop() {
+        letters.forEach((letter, i) => {
+            setTimeout(() => {
+                letter.classList.remove('hop');
+                void letter.offsetWidth;
+                letter.classList.add('hop');
+            }, i * hopInterval);
+        });
+        const totalDuration = (letters.length - 1) * hopInterval + 450 + loopDelay;
+        setTimeout(runLoop, totalDuration);
+    }
+
+    // イントロが落ち着いてからhopループ開始
+    setTimeout(() => {
+        heroTitle.classList.remove('intro');
+        heroTitle.classList.add('visible');
+        runLoop();
+    }, introDelay);
+}
+
 // ローディング画面の制御
 window.addEventListener('load', function() {
     const loadingScreen = document.querySelector('.loading-screen');
-    
+
     // 3秒後にローディング画面をフェードアウト（全ての文字のアニメーション完了後）
     setTimeout(() => {
         loadingScreen.classList.add('fade-out');
-        
-        // フェードアウト完了後にローディング画面を削除
+
+        // フェードアウト完了後にローディング画面を削除・ヒーロータイトル開始
         setTimeout(() => {
             loadingScreen.style.display = 'none';
+            startHeroHop();
         }, 500);
     }, 3000);
 });
